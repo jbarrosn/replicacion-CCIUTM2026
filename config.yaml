@@ -1,0 +1,81 @@
+# =============================================================================
+#  CONFIGURACIÓN DEL ANÁLISIS
+#  Teoría de grafos y algoritmo de Louvain: abandono escolar por provincia
+#  Ponencia CCIUTM 2026 · Barros Naranjo & Vera Pisco (UTM)
+#
+#  Todo lo que depende de los archivos de datos está en este archivo.
+#  El código en src/ no tiene rutas ni nombres de columnas escritos a mano.
+#  Los valores de abajo corresponden a los archivos publicados por MINEDEC
+#  y BCE usados en la ponencia (verificados con los datos originales).
+#
+#  Comprobación previa:  python scripts/00_inspeccionar_datos.py
+# =============================================================================
+
+semilla: 2026            # semilla de Louvain y de la disposición del grafo
+
+rutas:
+  datos_amie: datos/datos_AMIE_2024-2025
+  datos_bce: datos/datos_BCE_VAB
+  cartografia: cartografia/provincias_ecuador_inec2012.geojson
+  resultados: resultados
+
+# -----------------------------------------------------------------------------
+# Parámetros del método (diapositivas 5 a 8)
+# -----------------------------------------------------------------------------
+metodo:
+  percentil_umbral: 0.75                 # ecuación (3)
+  pesos_aristas: rho                     # "rho": peso = ρ(u, v), como en el análisis original
+                                         # "binario": peso = 1 (A de la ecuación 3)
+  percentiles_sensibilidad: [0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90]
+
+# -----------------------------------------------------------------------------
+# Los 15 grados de escolarización regular, en orden (columnas de la matriz).
+#   clave  : nombre en los resultados
+#   codigo : cómo aparece el grado dentro del nombre de columna del AMIE
+# Se excluyen Alfabetización, Ciclos Intensivos, No Registrado y Menores a 3 años.
+# -----------------------------------------------------------------------------
+grados:
+  - {clave: "Inicial 1",  codigo: "Grupo3años"}
+  - {clave: "Inicial 2",  codigo: "Grupo4años"}
+  - {clave: "1.º EGB",    codigo: "1erañoBásica"}
+  - {clave: "2.º EGB",    codigo: "2doañoBásica"}
+  - {clave: "3.º EGB",    codigo: "3erañoBásica"}
+  - {clave: "4.º EGB",    codigo: "4toañoBásica"}
+  - {clave: "5.º EGB",    codigo: "5toañoBásica"}
+  - {clave: "6.º EGB",    codigo: "6toañoBásica"}
+  - {clave: "7.º EGB",    codigo: "7moañoBásica"}
+  - {clave: "8.º EGB",    codigo: "8voañoBásica"}
+  - {clave: "9.º EGB",    codigo: "9noañoBásica"}
+  - {clave: "10.º EGB",   codigo: "10moañoBásica"}
+  - {clave: "1.º BGU",    codigo: "1erAñoBachillerato"}
+  - {clave: "2.º BGU",    codigo: "2doAñoBachillerato"}
+  - {clave: "3.º BGU",    codigo: "3erAñoBachillerato"}
+
+# -----------------------------------------------------------------------------
+# Fuente 1. AMIE Fin 2024-2025: una fila por institución (16 186 + 8 sin delimitar)
+# -----------------------------------------------------------------------------
+amie_fin:
+  archivo: MINEDUC_RegistrosAdministrativos_2024-2025-Fin.csv
+  separador: ";"
+  decimal: ","
+  codificacion: utf-8
+  columna_institucion: AMIE
+  columna_provincia: Provincia
+  columna_zona: "Zona  "               # el nombre original lleva dos espacios al final
+  # Columnas por grado y sexo; {grado} = codigo de la lista anterior
+  sexos: [Mujeres, Hombres]
+  plantilla_matricula: "Estudiantes{grado}{sexo}"
+  plantilla_abandono: "Estudiantes{sexo}Abandono{grado}"
+  # Segunda capa
+  columna_estudiantes: Total_Estudiantes
+  columna_docentes: Total_Docentes
+
+# -----------------------------------------------------------------------------
+# Fuente 2. VAB per cápita provincial (BCE, Cuentas Regionales 2018-2024)
+# -----------------------------------------------------------------------------
+vab_per_capita:
+  archivo: VAB_PerCapita_Provincial_2018-2024.xlsx
+  hoja: "VAB per cápita provincial"
+  fila_encabezado: 12                  # se saltan las 12 filas de título
+  columna_provincia: PROVINCIA
+  columna_valor_posicion: 24           # columna 24 = bloque "VAB per cápita", año 2023

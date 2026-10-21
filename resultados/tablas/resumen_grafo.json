@@ -1,0 +1,23 @@
+{
+  "percentil": 0.75,
+  "pesos_aristas": "rho",
+  "umbral_rho": 0.2066,
+  "pares_totales": 276,
+  "nodos": 23,
+  "aristas": 69,
+  "densidad": 0.2727,
+  "comunidades": 4,
+  "modularidad_Q": 0.4459,
+  "aisladas": [
+    "Cotopaxi"
+  ],
+  "semilla": 2026,
+  "sin_estandarizar": {
+    "pares_rho_positivo": 276,
+    "mediana_rho": 0.916
+  },
+  "con_estandarizar": {
+    "pares_rho_positivo": 130,
+    "mediana_rho": -0.023
+  }
+}

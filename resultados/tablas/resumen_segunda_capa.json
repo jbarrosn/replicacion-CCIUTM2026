@@ -1,0 +1,9 @@
+{
+  "variables": 17,
+  "correlacion_matrices_similitud": 0.5532,
+  "nodos": 24,
+  "aristas": 69,
+  "comunidades": 4,
+  "modularidad_Q": 0.3847,
+  "aisladas": []
+}

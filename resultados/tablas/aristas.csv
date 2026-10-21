@@ -1,0 +1,70 @@
+provincia_a,provincia_b,rho
+Azuay,Cañar,0.5387
+Azuay,Chimborazo,0.258
+Azuay,Guayas,0.5536
+Azuay,Loja,0.3622
+Azuay,Morona Santiago,0.3384
+Azuay,Pichincha,0.82
+Azuay,Santa Elena,0.6531
+Azuay,Santo Domingo,0.5246
+Azuay,Tungurahua,0.6249
+Bolívar,Imbabura,0.4193
+Bolívar,Manabí,0.5548
+Bolívar,Napo,0.4105
+Bolívar,Orellana,0.6169
+Bolívar,Zamora Chinchipe,0.5058
+Cañar,Esmeraldas,0.214
+Cañar,Guayas,0.4127
+Cañar,Loja,0.2832
+Cañar,Morona Santiago,0.368
+Cañar,Pichincha,0.2879
+Cañar,Santa Elena,0.3781
+Cañar,Tungurahua,0.318
+Carchi,Esmeraldas,0.5129
+Carchi,Los Ríos,0.3163
+Carchi,Pichincha,0.3804
+Carchi,Sucumbíos,0.2928
+Carchi,Tungurahua,0.2309
+Chimborazo,Imbabura,0.627
+Chimborazo,Loja,0.7622
+Chimborazo,Morona Santiago,0.3103
+Chimborazo,Santa Elena,0.4735
+Chimborazo,Tungurahua,0.5825
+Chimborazo,Zamora Chinchipe,0.3778
+El Oro,Zamora Chinchipe,0.2705
+Esmeraldas,Guayas,0.2395
+Esmeraldas,Los Ríos,0.6019
+Esmeraldas,Pastaza,0.2591
+Esmeraldas,Pichincha,0.208
+Esmeraldas,Santo Domingo,0.472
+Esmeraldas,Sucumbíos,0.3658
+Galápagos,Guayas,0.601
+Galápagos,Pastaza,0.5325
+Galápagos,Santo Domingo,0.5458
+Guayas,Pichincha,0.497
+Guayas,Santa Elena,0.3933
+Guayas,Santo Domingo,0.768
+Imbabura,Loja,0.6523
+Imbabura,Morona Santiago,0.3955
+Imbabura,Orellana,0.312
+Imbabura,Tungurahua,0.3646
+Imbabura,Zamora Chinchipe,0.4525
+Loja,Morona Santiago,0.5324
+Loja,Santa Elena,0.3962
+Loja,Tungurahua,0.4707
+Loja,Zamora Chinchipe,0.249
+Los Ríos,Sucumbíos,0.3355
+Manabí,Napo,0.7602
+Manabí,Orellana,0.7962
+Manabí,Zamora Chinchipe,0.6493
+Morona Santiago,Tungurahua,0.574
+Napo,Orellana,0.8491
+Napo,Zamora Chinchipe,0.786
+Orellana,Zamora Chinchipe,0.7123
+Pastaza,Sucumbíos,0.2679
+Pichincha,Santa Elena,0.4332
+Pichincha,Santo Domingo,0.6503
+Pichincha,Tungurahua,0.4802
+Santa Elena,Santo Domingo,0.2387
+Santa Elena,Sucumbíos,0.473
+Santa Elena,Tungurahua,0.5343

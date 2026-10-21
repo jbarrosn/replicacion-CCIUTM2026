@@ -43,11 +43,11 @@ y abrir este cuaderno desde la carpeta `tutorial/`."""))
 
 C.append(code(r"""import os, sys, subprocess
 
-if "google.colab" in sys.modules and not os.path.exists("replicacion-cciutm2026"):
+if "google.colab" in sys.modules and not os.path.exists("replicacion-CCIUTM2026"):
     subprocess.run(["git", "clone", "--depth", "1",
-                    "https://github.com/jbarrosn/replicacion-cciutm2026"], check=True)
+                    "https://github.com/jbarrosn/replicacion-CCIUTM2026"], check=True)
     subprocess.run([sys.executable, "-m", "pip", "install", "-q", "igraph", "geopandas"], check=True)
-    os.chdir("replicacion-cciutm2026/tutorial")
+    os.chdir("replicacion-CCIUTM2026/tutorial")
 
 RAIZ = os.path.abspath("..")
 sys.path.insert(0, os.path.join(RAIZ, "src"))

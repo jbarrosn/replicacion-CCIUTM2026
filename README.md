@@ -16,7 +16,7 @@ el análisis de sensibilidad y la segunda capa.
 
 ## Para estudiantes
 
-**Página de materiales:** <https://jbarrosn.github.io/replicacion-cciutm2026/>
+**Página de materiales:** <https://jbarrosn.github.io/replicacion-CCIUTM2026/>
 (el código QR de la ponencia lleva ahí).
 
 | Quiero... | Abra |
@@ -24,7 +24,7 @@ el análisis de sensibilidad y la segunda capa.
 | Ver la ponencia | [`ponencia/Ponencia_CCIUTM2026_Barros.pdf`](ponencia/Ponencia_CCIUTM2026_Barros.pdf) y las [animaciones](ponencia/videos) |
 | Entender qué se dice en cada diapositiva | [`ponencia/guion.md`](ponencia/guion.md) y la [guía de estudio](ponencia/README.md) |
 | Seguir el desarrollo paso a paso, con las ecuaciones y el código | [`tutorial/desarrollo_paso_a_paso.ipynb`](tutorial/desarrollo_paso_a_paso.ipynb) |
-| Ejecutarlo sin instalar nada | [Abrir el cuaderno en Google Colab](https://colab.research.google.com/github/jbarrosn/replicacion-cciutm2026/blob/main/tutorial/desarrollo_paso_a_paso.ipynb) |
+| Ejecutarlo sin instalar nada | [Abrir el cuaderno en Google Colab](https://colab.research.google.com/github/jbarrosn/replicacion-CCIUTM2026/blob/main/tutorial/desarrollo_paso_a_paso.ipynb) |
 
 El cuaderno usa los datos reales (incluidos en `datos/`), verifica a mano la modularidad Q
 con la ecuación (4) y termina con siete ejercicios.

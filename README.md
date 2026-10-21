@@ -14,14 +14,29 @@ el análisis de sensibilidad y la segunda capa.
 
 ---
 
+## Para estudiantes
+
+| Quiero... | Abra |
+|---|---|
+| Ver la ponencia | [`ponencia/Ponencia_CCIUTM2026_Barros.pdf`](ponencia/Ponencia_CCIUTM2026_Barros.pdf) y las [animaciones](ponencia/videos) |
+| Entender qué se dice en cada diapositiva | [`ponencia/guion.md`](ponencia/guion.md) y la [guía de estudio](ponencia/README.md) |
+| Seguir el desarrollo paso a paso, con las ecuaciones y el código | [`tutorial/desarrollo_paso_a_paso.ipynb`](tutorial/desarrollo_paso_a_paso.ipynb) |
+| Ejecutarlo sin instalar nada | [Abrir el cuaderno en Google Colab](https://colab.research.google.com/github/jbarrosn/replicacion-cciutm2026/blob/main/tutorial/desarrollo_paso_a_paso.ipynb) |
+
+El cuaderno usa los datos reales (incluidos en `datos/`), verifica a mano la modularidad Q
+con la ecuación (4) y termina con siete ejercicios.
+
+---
+
 ## 1. Inicio rápido
 
 ```bash
 pip install -r requirements.txt                 # Python 3.10 o superior
-# 1) copie los datos en datos/ (ver sección 2)
-python scripts/00_inspeccionar_datos.py         # 2) verifica archivos y columnas
-python scripts/ejecutar_todo.py                 # 3) corre los pasos 1 a 5
+python scripts/00_inspeccionar_datos.py         # verifica archivos y columnas
+python scripts/ejecutar_todo.py                 # corre los pasos 1 a 5
 ```
+
+Los datos ya vienen en `datos/`; si los descarga de nuevo, colóquelos ahí (ver sección 2).
 
 Las tablas quedan en `resultados/tablas/` y las figuras en `resultados/figuras/`.
 
@@ -64,7 +79,9 @@ replicacion_CCIUTM2026/
 ├── README.md                    este archivo
 ├── config.yaml                  rutas, columnas y parámetros (lo único que se edita)
 ├── requirements.txt
-├── datos/                       archivos originales (no incluidos, ver sección 2)
+├── ponencia/                    diapositivas (PDF y PowerPoint), videos y guion
+├── tutorial/                    cuaderno Jupyter paso a paso para estudiantes
+├── datos/                       los dos archivos originales (ver sección 2)
 ├── cartografia/                 límites provinciales INEC
 ├── src/grafo_abandono/          el método, un módulo por etapa
 │   ├── configuracion.py         lee config.yaml

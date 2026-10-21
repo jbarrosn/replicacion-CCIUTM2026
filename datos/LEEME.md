@@ -1,6 +1,7 @@
 # Carpeta de datos
 
-Coloque aquí los dos archivos originales con estos nombres exactos:
+El repositorio ya incluye los dos archivos originales. Si los descarga de nuevo,
+colóquelos aquí con estos nombres exactos:
 
 ```
 datos/

@@ -16,6 +16,9 @@ el análisis de sensibilidad y la segunda capa.
 
 ## Para estudiantes
 
+**Página de materiales:** <https://jbarrosn.github.io/replicacion-cciutm2026/>
+(el código QR de la ponencia lleva ahí).
+
 | Quiero... | Abra |
 |---|---|
 | Ver la ponencia | [`ponencia/Ponencia_CCIUTM2026_Barros.pdf`](ponencia/Ponencia_CCIUTM2026_Barros.pdf) y las [animaciones](ponencia/videos) |
@@ -79,6 +82,7 @@ replicacion_CCIUTM2026/
 ├── README.md                    este archivo
 ├── config.yaml                  rutas, columnas y parámetros (lo único que se edita)
 ├── requirements.txt
+├── docs/                        página de materiales (GitHub Pages) y código QR
 ├── ponencia/                    diapositivas (PDF y PowerPoint), videos y guion
 ├── tutorial/                    cuaderno Jupyter paso a paso para estudiantes
 ├── datos/                       los dos archivos originales (ver sección 2)

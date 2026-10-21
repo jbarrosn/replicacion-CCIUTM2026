@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafos y Louvain · CCIUTM 2026</title>
+<meta name="description" content="Materiales de la ponencia: teoría de grafos y algoritmo de Louvain aplicados al abandono escolar por provincia en Ecuador. IX Congreso Internacional de Ciencias Básicas, UTM 2026.">
+<meta property="og:title" content="Grafos y Louvain: abandono escolar por provincia en Ecuador">
+<meta property="og:description" content="Diapositivas, cuaderno paso a paso, Google Colab y código reproducible. CCIUTM 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='9' r='5' fill='%2366C2A5'/%3E%3Ccircle cx='23' cy='11' r='5' fill='%23FC8D62'/%3E%3Ccircle cx='15' cy='24' r='5' fill='%23A6D854'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --verde: #0B4F2E; --verde-2: #0B6B3A; --fondo: #F3F7F4; --borde: #D5DDD8;
+    --tinta: #1F2933; --gris: #5B6670; --c1: #66C2A5; --c2: #FC8D62; --c3: #8DA0CB; --c4: #A6D854;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta);
+         font: 16px/1.5 Calibri, Carlito, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { background: var(--verde); color: #fff; padding: 28px 0 36px; position: relative; overflow: hidden; }
+  .contenedor { max-width: 760px; margin: 0 auto; padding: 0 16px; position: relative; }
+  .evento { font-size: 13px; letter-spacing: .04em; text-transform: uppercase; opacity: .85; margin: 0 0 10px; }
+  h1 { font-size: clamp(24px, 6vw, 34px); line-height: 1.15; margin: 0 0 10px; }
+  .sub { margin: 0 0 14px; font-size: 17px; opacity: .92; }
+  .autores { font-size: 14px; opacity: .85; margin: 0; }
+  .red { position: absolute; right: -40px; top: -20px; width: 220px; opacity: .35; pointer-events: none; }
+  main { padding-bottom: 40px; }
+  @media (max-width: 639px) { .red { width: 130px; right: -50px; top: -30px; opacity: .2; } }
+  .botones { display: grid; gap: 12px; margin-top: -18px; }
+  @media (min-width: 640px) { .botones { grid-template-columns: 1fr 1fr; } }
+  a.boton { display: flex; gap: 14px; align-items: center; background: #fff; color: var(--tinta);
+            text-decoration: none; border: 1px solid var(--borde); border-radius: 12px; padding: 16px;
+            min-height: 84px; transition: border-color .15s, transform .15s; }
+  a.boton:hover, a.boton:focus-visible { border-color: var(--verde-2); transform: translateY(-1px); outline: none; }
+  a.boton.principal { background: var(--verde-2); color: #fff; border-color: var(--verde-2); }
+  .icono { flex: 0 0 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+           background: var(--fondo); }
+  .principal .icono { background: rgba(255,255,255,.15); }
+  .icono svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2;
+               stroke-linecap: round; stroke-linejoin: round; color: var(--verde-2); }
+  .principal .icono svg { color: #fff; }
+  .texto strong { display: block; font-size: 17px; }
+  .texto span { font-size: 14px; color: var(--gris); }
+  .principal .texto span { color: rgba(255,255,255,.85); }
+  h2 { font-size: 18px; color: var(--verde); margin: 32px 0 8px; }
+  .pasos { margin: 0; padding-left: 20px; color: var(--tinta); }
+  .pasos li { margin: 4px 0; }
+  .cifras { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+  @media (min-width: 640px) { .cifras { grid-template-columns: repeat(4, 1fr); } }
+  .cifra { background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 12px; text-align: center; }
+  .cifra b { display: block; font-size: 26px; color: var(--verde-2); line-height: 1.1; }
+  .cifra small { color: var(--gris); font-size: 13px; }
+  footer { font-size: 13px; color: var(--gris); padding-bottom: 32px; }
+  footer a { color: var(--verde-2); }
+</style>
+</head>
+<body>
+<header>
+  <svg class="red" viewBox="0 0 200 200" aria-hidden="true">
+    <g stroke="#fff" stroke-width="1.5" opacity=".6">
+      <line x1="40" y1="40" x2="100" y2="70"/><line x1="100" y1="70" x2="160" y2="40"/>
+      <line x1="100" y1="70" x2="90" y2="130"/><line x1="90" y1="130" x2="150" y2="150"/>
+      <line x1="90" y1="130" x2="40" y2="160"/><line x1="40" y1="40" x2="90" y2="130"/>
+    </g>
+    <circle cx="40" cy="40" r="11" fill="var(--c3)"/><circle cx="100" cy="70" r="11" fill="var(--c1)"/>
+    <circle cx="160" cy="40" r="11" fill="var(--c1)"/><circle cx="90" cy="130" r="11" fill="var(--c4)"/>
+    <circle cx="150" cy="150" r="11" fill="var(--c2)"/><circle cx="40" cy="160" r="11" fill="var(--c4)"/>
+  </svg>
+  <div class="contenedor">
+    <p class="evento">IX Congreso Internacional de Ciencias Básicas · UTM 2026</p>
+    <h1>Teoría de grafos y algoritmo de Louvain para la detección de comunidades estructurales</h1>
+    <p class="sub">Aplicación al abandono escolar por provincia en Ecuador</p>
+    <p class="autores">Jhon Ronald Barros Naranjo, MSc. · Dimas Geovanny Vera Pisco · Universidad Técnica de Manabí</p>
+  </div>
+</header>
+
+<main class="contenedor">
+  <nav class="botones" aria-label="Materiales">
+    <a class="boton principal" data-goatcounter-click="diapositivas" data-goatcounter-title="Diapositivas (PDF)"
+       href="https://github.com/jbarrosn/replicacion-cciutm2026/blob/main/ponencia/Ponencia_CCIUTM2026_Barros.pdf">
+      <span class="icono"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></span>
+      <span class="texto"><strong>Ver las diapositivas</strong><span>Las 15 diapositivas en PDF</span></span>
+    </a>
+    <a class="boton" data-goatcounter-click="colab" data-goatcounter-title="Abrir en Google Colab"
+       href="https://colab.research.google.com/github/jbarrosn/replicacion-cciutm2026/blob/main/tutorial/desarrollo_paso_a_paso.ipynb">
+      <span class="icono"><svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg></span>
+      <span class="texto"><strong>Ejecutar en Google Colab</strong><span>El análisis completo, sin instalar nada</span></span>
+    </a>
+    <a class="boton" data-goatcounter-click="cuaderno" data-goatcounter-title="Cuaderno paso a paso"
+       href="https://nbviewer.org/github/jbarrosn/replicacion-cciutm2026/blob/main/tutorial/desarrollo_paso_a_paso.ipynb">
+      <span class="icono"><svg viewBox="0 0 24 24"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4V4z"/><path d="M8 9h8M8 13h6"/></svg></span>
+      <span class="texto"><strong>Desarrollo paso a paso</strong><span>Ecuaciones (0) a (4), gráficos y ejercicios</span></span>
+    </a>
+    <a class="boton" data-goatcounter-click="videos" data-goatcounter-title="Animaciones y guion"
+       href="https://github.com/jbarrosn/replicacion-cciutm2026/tree/main/ponencia">
+      <span class="icono"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg></span>
+      <span class="texto"><strong>Animaciones y guion</strong><span>Los 5 videos y la guía de estudio</span></span>
+    </a>
+    <a class="boton" data-goatcounter-click="codigo" data-goatcounter-title="Código en GitHub"
+       href="https://github.com/jbarrosn/replicacion-cciutm2026">
+      <span class="icono"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+      <span class="texto"><strong>Código y datos en GitHub</strong><span>Paquete de replicación en Python</span></span>
+    </a>
+    <a class="boton" data-goatcounter-click="descarga" data-goatcounter-title="Descargar todo (zip)"
+       href="https://github.com/jbarrosn/replicacion-cciutm2026/archive/refs/heads/main.zip">
+      <span class="icono"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg></span>
+      <span class="texto"><strong>Descargar todo</strong><span>Un archivo .zip con el repositorio</span></span>
+    </a>
+  </nav>
+
+  <h2>El método en cinco pasos</h2>
+  <ol class="pasos">
+    <li><b>Datos:</b> tasa de abandono por provincia y grado, matriz de 24 × 15.</li>
+    <li><b>Estandarizar:</b> puntuación z por grado, elimina la curva nacional compartida.</li>
+    <li><b>Similitud:</b> correlación de Pearson entre perfiles estandarizados.</li>
+    <li><b>Umbral:</b> se conserva el 25 % de pares más parecidos.</li>
+    <li><b>Comunidades:</b> Louvain maximiza la modularidad Q.</li>
+  </ol>
+
+  <h2>Resultados</h2>
+  <div class="cifras">
+    <div class="cifra"><b>16 186</b><small>instituciones (AMIE)</small></div>
+    <div class="cifra"><b>4</b><small>comunidades</small></div>
+    <div class="cifra"><b>0.446</b><small>modularidad Q</small></div>
+    <div class="cifra"><b>3 a 5</b><small>zonas por comunidad</small></div>
+  </div>
+</main>
+
+<footer class="contenedor">
+  Datos: MINEDEC, Registros Administrativos AMIE 2024-2025 (Fin); Banco Central del Ecuador, Cuentas Regionales.
+  Contacto: <a href="mailto:jhon.barros@utm.edu.ec">jhon.barros@utm.edu.ec</a>.
+  Esta página cuenta visitas de forma anónima, sin cookies.
+</footer>
+
+<script data-goatcounter="https://cciutm2026.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

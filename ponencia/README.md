@@ -1,6 +1,6 @@
 # La ponencia
 
-* [`Ponencia_CCIUTM2026_Barros.pdf`](Ponencia_CCIUTM2026_Barros.pdf): las 15 diapositivas para leer en cualquier dispositivo.
+* [`Ponencia_CCIUTM2026_Barros.pdf`](Ponencia_CCIUTM2026_Barros.pdf): las 16 diapositivas para leer en cualquier dispositivo.
 * [`Ponencia_CCIUTM2026_Barros.pptx`](Ponencia_CCIUTM2026_Barros.pptx): versión original con videos incrustados y notas del orador.
 * [`videos/`](videos): las cinco animaciones de la ponencia, por separado.
 * [`guion.md`](guion.md): lo que se dice en cada diapositiva (10 minutos).
@@ -11,7 +11,8 @@
 |---|---|---|---|
 | 1 | Portada | | |
 | 2 | ¿Qué ve un grafo que una tabla no? | | |
-| 3 | Nodos, aristas y comunidades | [Video 1](videos/Video1_intuicion.mp4) | |
+| 3 | ¿Qué es un grafo? Definición $G = (V, E)$ y matriz de adyacencia | | Sección 5 (matriz $A$) |
+| 3b | Nodos, aristas y comunidades | [Video 1](videos/Video1_intuicion.mp4) | |
 | 4 | Los datos: de 16 186 instituciones a una matriz 24 × 15, ecuación (0) | | Secciones 1 y 2 |
 | 5 | El método en cinco pasos | | |
 | 6 | Estandarización, ecuación (1) | [Video 2](videos/Video2_estandarizacion.mp4) | Sección 3 |
